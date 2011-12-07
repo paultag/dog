@@ -3,8 +3,15 @@
 # conditions of the Expat license.
 
 import sys
-import ccat.ccat as ccat
+import os
+import pydog.dog as ccat
+
+f = sys.argv[1]
 
 c = ccat.ccat()
-c.set_colors_by_name("desktop")
-c.cat( "/home/tag/.config/autostart/gnome-do.desktop" )
+
+fp, xtn = os.path.splitext( f )
+xtn = xtn[1:]
+
+c.set_colors_by_name( "control" ) # xtn )
+c.cat( f )

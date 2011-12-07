@@ -52,6 +52,12 @@ class ccat:
 		for rule in rules.split('\n'):
 			if rule[:1] == ' ':
 				trans = rule.split()
+				if len(trans) == 1:
+					# attempt to read...
+					trans.append(trans[0])
+					trans[0] = ' '
+
+
 				trans[0] = trans[0].decode('string_escape')
 				if trans[1][:1] == '^':
 					cur_state[trans[0]] = ( "p", trans[1][1:] )

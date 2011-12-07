@@ -1,0 +1,25 @@
+entry header
+ \n header
+    value
+
+header header
+ :  value_entry
+
+value_entry value
+
+value value
+ \n entry
+ (  version_entry
+ <  email_entry
+
+version version
+ ) version_exit
+
+version_entry version
+version_exit  ^value
+
+email_entry email
+email_exit  ^value
+
+email email
+ > email_exit
