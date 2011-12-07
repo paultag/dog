@@ -1,0 +1,15 @@
+entry   0
+item    33
+heading 35
+
+lineitem 34
+
+dash_one  1;36
+dash_two  1;36
+signoff   1;36
+
+email_entry 33
+email_exit  33
+email       33
+
+invalid 41

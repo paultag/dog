@@ -1,0 +1,33 @@
+entry heading
+ item
+ \n entry
+
+heading heading
+ \n entry
+
+item item
+ \n entry
+ - dash_one
+   lineitem
+
+lineitem lineitem
+ \n entry
+
+dash_one invalid
+ - dash_two
+
+dash_two invalid
+   signoff
+
+signoff signoff
+ < email_entry
+ \n entry
+
+email_entry email
+
+email email
+ > email_exit
+
+email_exit signoff
+
+invalid invalid
