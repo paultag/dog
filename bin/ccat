@@ -1,0 +1,64 @@
+import sys
+
+rules = open("XDGParser", 'r').read()
+color = open("XDGParser.colors", 'r').read()
+to_parse = open("test", 'r').read()
+
+colors = {}
+states = {}
+
+parse_state = "entry"
+
+for c in color.split('\n'):
+	cp = c.split()
+	if len(cp) == 2:
+		colors[cp[0]] = cp[1]
+
+for rule in rules.split('\n'):
+	if rule[:1] == ' ':
+		trans = rule.split()
+		trans[0] = trans[0].decode('string_escape')
+
+		if trans[1][:1] == '^':
+			cur_state[trans[0]] = ( "p", trans[1][1:] )
+		else:
+			cur_state[trans[0]] = ( "d", trans[1] )
+		
+	elif rule.strip() == '':
+		pass
+		
+	else:
+		trans = rule.split()
+		if trans[1][:1] == '^':
+			states[trans[0]] = {
+				"default" : ( "p", trans[1][1:] )
+			}
+		else:
+			states[trans[0]] = {
+				"default" : ( "d", trans[1] )
+			}
+		cur_state = states[trans[0]]
+
+def doThing( passThrough, nS, charzard ):
+	global parse_state
+	
+	if nS != parse_state:
+		parse_state = nS
+		sys.stdout.write("[%sm" % colors[nS])
+		if passThrough == 'p':
+			handleChar( charzard )
+			return
+	sys.stdout.write( charzard )
+
+def handleChar( charzard ):
+	try:
+		passThrough, nS = states[parse_state][charzard]
+		doThing( passThrough, nS, charzard )
+	except KeyError as e:
+		passThrough, nS = states[parse_state]["default"]
+		doThing( passThrough, nS, charzard )
+
+for line in to_parse.split('\n'):
+	for char in line:
+		handleChar( char )
+	handleChar( "\n" )

@@ -1,0 +1,27 @@
+entry ^key
+ \n entry
+ [ group_entry
+ # comment
+ = invalid
+
+group_entry group
+
+group group
+ \n invalid
+ ] group_fin
+
+group_fin entry
+
+comment comment
+ \n entry
+
+key key
+ \n invalid
+ = value_pre
+
+value_pre value
+
+value value
+ \n entry
+
+invalid invalid
