@@ -4,6 +4,9 @@ entry header
 
 header header
  :  value_entry
+ \n invalid
+
+invalid invalid
 
 value_entry value
 
@@ -11,6 +14,15 @@ value value
  \n entry
  (  version_entry
  <  email_entry
+ $  var_entry
+
+var_entry invalid
+ { var
+
+var var
+ } var_exit
+
+var_exit ^value
 
 version version
  ) version_exit

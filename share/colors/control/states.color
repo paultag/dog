@@ -4,9 +4,15 @@ header 1;35
 value_entry 0;34
 value 0;37
 
+var        1;37
+var_entry  1;37
+var_exit   1;37
+
 version 1;33
 version_entry 0;33
 version_exit  0;33
 email 1;33
 email_entry 0;33
 email_exit  0;33
+
+invalid 41
