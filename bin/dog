@@ -13,5 +13,9 @@ c = ccat.ccat()
 fp, xtn = os.path.splitext( f )
 xtn = xtn[1:]
 
-c.set_colors_by_name( xtn )
+try:
+	c.set_colors_by_name( xtn )
+except IOError:
+	c.set_colors_by_name("default")
+
 c.cat( f )
